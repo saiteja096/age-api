@@ -103,4 +103,4 @@ class Age(Resource):
             return {"message":"There was an error inserting into user table."+str(e)+""},500
 class Chart(Resource):
     def post(self):
-        return [70,68,65,60,55,50,45,40,35,32]
+        return {"array":[70,68,65,60,55,50,45,40,35,32]},201
