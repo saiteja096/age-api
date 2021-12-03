@@ -101,4 +101,6 @@ class Age(Resource):
                     return {"success":str(age)},201
         except Exception as e:
             return {"message":"There was an error inserting into user table."+str(e)+""},500
-
+class Chart(Resource):
+    def post(self):
+        return [70,68,65,60,55,50,45,40,35,32]
