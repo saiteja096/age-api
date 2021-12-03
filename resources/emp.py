@@ -2,7 +2,7 @@ from flask_restful import Resource,reqparse
 from db import query
 from werkzeug.security import safe_str_cmp
 from datetime import datetime
-
+from flask_cors import CORS 
 class Profile(Resource):
     def get(self):
         try:
