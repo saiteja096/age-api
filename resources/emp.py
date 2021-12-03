@@ -65,14 +65,14 @@ class Age(Resource):
             saving_rate = data['savingsrate']
             inflation = data['incomerate']
             growth = data['incomerate']
-            age = data['age']
+            a = data['age']
             total_saving = 0
 
             saving = income - expense
             total_saving = total_saving + saving
 
 
-            for age in range(age+1,86):
+            for age in range(a+1,86):
                 print("Age = "+str(age))
                 income = inf_grow(income)
                 expense = inf_grow(expense)
