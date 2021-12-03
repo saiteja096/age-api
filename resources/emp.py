@@ -42,8 +42,8 @@ class Profile(Resource):
 
         return {"message":"Successfully Inserted."},201
 
-def inf_grow(i):
-    i = i + (6/100)*i
+def inf_grow(i,j):
+    i = i + (j/100)*i
     return i
 
 class Age(Resource):
@@ -54,24 +54,24 @@ class Age(Resource):
             return {"message":"There was an error connecting to user table."},500
 
     def post(self):
-        
         parser=reqparse.RequestParser()
         parser.add_argument('name',type=str,required=True,help="name cannot be left blank!")
         parser.add_argument('gender',type=str,required=True,help="gender cannot be left blank!")
-        parser.add_argument('age',type=int,required=True,help="age cannot be left blank!")
-        parser.add_argument('pref_r_age',type=int,required=True,help="pref_r_age cannot be left blank!")
-        parser.add_argument('income',type=int,required=True,help="income cannot be left blank!")
-        parser.add_argument('incomerate',type=int,required=True,help="incomerate cannot be left blank!")
-        parser.add_argument('expenditure',type=int,required=True,help="expenditure cannot be left blank!")
-        parser.add_argument('savingsrate',type=int,required=True,help="savingsrate cannot be left blank!")
+        parser.add_argument('age',type=str,required=True,help="age cannot be left blank!")
+        parser.add_argument('pref_r_age',type=str,required=True,help="pref_r_age cannot be left blank!")
+        parser.add_argument('income',type=str,required=True,help="income cannot be left blank!")
+        parser.add_argument('incomerate',type=str,required=True,help="incomerate cannot be left blank!")
+        parser.add_argument('expenditure',type=str,required=True,help="expenditure cannot be left blank!")
+        parser.add_argument('savingsrate',type=str,required=True,help="savingsrate cannot be left blank!")
         data=parser.parse_args()
         try:
-            income = data['income']
-            expense = data['expenditure']
-            saving_rate = data['savingsrate']
-            inflation = data['incomerate']
-            growth = data['incomerate']
-            a = data['age']
+            
+            income = int(data['income'])
+            expense = int(data['expenditure'])
+            saving_rate = int(data['savingsrate'])
+            inflation = int(data['incomerate'])
+            growth = int(data['incomerate'])
+            a = int(data['age'])
             total_saving = 0
 
             saving = income - expense
@@ -80,8 +80,8 @@ class Age(Resource):
 
             for age in range(a+1,86):
                 print("Age = "+str(age))
-                income = inf_grow(income)
-                expense = inf_grow(expense)
+                income = inf_grow(income,inflation)
+                expense = inf_grow(expense,inflation)
                 rate_return = (10/100)*total_saving
                 saving = income - expense
                 total_saving = int(total_saving + saving + rate_return)
@@ -94,7 +94,7 @@ class Age(Resource):
                 for j in range(age+1,86):
                     n_total_saving = int(n_total_saving - n_expense + n_rate_return)
                     n_rate_return = (10/100)*n_total_saving
-                    n_expense = inf_grow(n_expense)
+                    n_expense = inf_grow(n_expense,inflation)
                     if n_total_saving < 0:
                         print("If retired at age = " + str(age) + " Savings completed at the age = " + str(j))
                         break
