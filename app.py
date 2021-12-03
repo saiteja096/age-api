@@ -8,6 +8,7 @@ app.config['PROPAGATE_EXCEPTIONS']=True
 api=Api(app)
 api.add_resource(Profile,'/profile')
 
+api.add_resource(Age,'/age')
 
 
 
