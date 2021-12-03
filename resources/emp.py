@@ -40,7 +40,7 @@ class Profile(Resource):
         except Exception as e:
             return {"message":"There was an error inserting into user table."+str(e)+""},500
 
-        return {"message":"Successfully Inserted."},201
+        return {"success":"Successfully Inserted."},201
 
 def inf_grow(i,j):
     i = i + (j/100)*i
@@ -98,7 +98,7 @@ class Age(Resource):
                         print("If retired at age = " + str(age) + " Savings completed at the age = " + str(j))
                         break
                 if  n_total_saving >0:
-                    return {"message":str(age)},201
+                    return {"success":str(age)},201
         except Exception as e:
             return {"message":"There was an error inserting into user table."+str(e)+""},500
 
