@@ -102,4 +102,3 @@ class Age(Resource):
         except Exception as e:
             return {"message":"There was an error inserting into user table."+str(e)+""},500
 
-        return {"message":"Successfully Inserted."},201
