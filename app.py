@@ -1,6 +1,6 @@
 from flask import Flask
 from flask_restful import Api
-from resources.emp import Profile
+from resources.emp import Profile,Age
 
 app=Flask(__name__)
 
