@@ -54,18 +54,17 @@ class Age(Resource):
             return {"message":"There was an error connecting to user table."},500
 
     def post(self):
-        parser=reqparse.RequestParser()
-        parser.add_argument('name',type=str,required=True,help="name cannot be left blank!")
-        parser.add_argument('gender',type=str,required=True,help="gender cannot be left blank!")
-        parser.add_argument('age',type=str,required=True,help="age cannot be left blank!")
-        parser.add_argument('pref_r_age',type=str,required=True,help="pref_r_age cannot be left blank!")
-        parser.add_argument('income',type=str,required=True,help="income cannot be left blank!")
-        parser.add_argument('incomerate',type=str,required=True,help="incomerate cannot be left blank!")
-        parser.add_argument('expenditure',type=str,required=True,help="expenditure cannot be left blank!")
-        parser.add_argument('savingsrate',type=str,required=True,help="savingsrate cannot be left blank!")
-        data=parser.parse_args()
         try:
-            
+            parser=reqparse.RequestParser()
+            parser.add_argument('name',type=str,required=True,help="name cannot be left blank!")
+            parser.add_argument('gender',type=str,required=True,help="gender cannot be left blank!")
+            parser.add_argument('age',type=str,required=True,help="age cannot be left blank!")
+            parser.add_argument('pref_r_age',type=str,required=True,help="pref_r_age cannot be left blank!")
+            parser.add_argument('income',type=str,required=True,help="income cannot be left blank!")
+            parser.add_argument('incomerate',type=str,required=True,help="incomerate cannot be left blank!")
+            parser.add_argument('expenditure',type=str,required=True,help="expenditure cannot be left blank!")
+            parser.add_argument('savingsrate',type=str,required=True,help="savingsrate cannot be left blank!")
+            data=parser.parse_args()
             income = int(data['income'])
             expense = int(data['expenditure'])
             saving_rate = int(data['savingsrate'])
