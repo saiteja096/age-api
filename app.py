@@ -9,7 +9,7 @@ app.config['PROPAGATE_EXCEPTIONS']=True
 api=Api(app)
 CORS(app)
 api.add_resource(Profile,'/profile')
-
+api.add_resource(Chart,'/chart')
 api.add_resource(Age,'/age')
 
 
