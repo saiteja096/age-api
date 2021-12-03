@@ -91,7 +91,9 @@ class Age(Resource):
                     n_expense = inf_grow(n_expense)
                     if n_total_saving < 0:
                         print("If retired at age = " + str(age) + " Savings completed at the age = " + str(j))
-                        return {"message":j},201
+                        break
+                if  n_total_saving >0:
+                    return {"message":str(age)},201
         except Exception as e:
             return {"message":"There was an error inserting into user table."+str(e)+""},500
 
